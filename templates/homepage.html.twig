@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tournaments{% endblock %}
+
+{% block body %}
+    <h1>Tournament management</h1>
+
+    <ul>
+        {% for tournament in tournaments %}
+            <li>{{ tournament.name|raw }}</li>
+        {% else %}
+            <li>No tournaments</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
