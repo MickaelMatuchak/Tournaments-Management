@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tournament Manager</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset("/assets/css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/form-elements.css") }}">
+    <link rel="stylesheet" href="{{ asset("/assets/css/style.css") }}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<!-- Top content -->
+<div class="top-content">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text">
+                    <h1><strong>Tournament Manager</strong></h1>
+                    <h3>Authentification requise pour accèder au site</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Connexion</h3>
+                                <p>Déjà un compte ? Rentrez vos identifiants:</p>
+                            </div>
+                        </div>
+
+                        <div class="form-bottom">
+                            {% if error %}
+                                <div class="alert alert-danger">
+                                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                                </div>
+                            {% endif %}
+
+                            <form role="form" action="{{ path('login') }}" method="post" class="login-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="username">Pseudo</label>
+                                    <input type="text" id="username" name="_username" placeholder="Pseudo"
+                                           value="{{ last_username }}" required/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="password">Mot de passe</label>
+                                    <input type="password" id="password" name="_password" placeholder="Mot de passe "
+                                           required/>
+                                </div>
+
+                                <button type="submit" class="btn">Connexion!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-1 middle-border"></div>
+                <div class="col-sm-1"></div>
+
+                <div class="col-sm-5">
+                    <div class="form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Inscription</h3>
+                                <p>Complétez le formulaire et accèdez en un instant à Tournament Manager:</p>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            {% if register_error %}
+                                <div class="alert alert-danger">
+                                    {{ register_error }}
+                                </div>
+                            {% endif %}
+
+                            <form role="form" action="{{ path('register') }}" method="post" class="registration-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="register-username">Pseudo</label>
+                                    <input type="text" id="register-username" name="_register-username"
+                                           placeholder="Pseudo" required/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="register-password">Mot de passe</label>
+                                    <input type="password" id="register-password" name="_register-password"
+                                           placeholder="Mot de passe" required/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="register-confirm-password">Confirmez mot de
+                                        passe</label>
+                                    <input type="password" id="register-confirm-password"
+                                           name="_register-confirm-password"
+                                           placeholder="Confirmez mot de passe " required/>
+                                </div>
+
+                                <button type="submit" class="btn">Inscription!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="footer-border"></div>
+                <p>Template made by Anli Zaimi at <a href="http://azmind.com"
+                                                     target="_blank"><strong>AZMIND</strong></a></p>
+                <p>Développé par Mickaël Matuchak dans le cadre du module IFI - Symfony encadré par Kevin Dunglas</p>
+                <p>Université Lille 1 - 2018©</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="{{ asset("/assets/js/jquery-1.11.1.min.js") }}"></script>
+    <script src="{{ asset("/assets/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("/assets/js/jquery.backstretch.min.js") }}"></script>
+    <script src="{{ asset("/assets/js/scripts.js") }}"></script>
+</body>
+
+</html>
+

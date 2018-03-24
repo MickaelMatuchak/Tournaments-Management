@@ -11,7 +11,7 @@ use App\Entity\Tournament;
 class HomepageController extends AbstractController
 {
     /**
-     * @Route("/homepage", name="homepage")
+     * @Route("/", name="homepage")
      */
     public function index(Request $request): Response
     {
