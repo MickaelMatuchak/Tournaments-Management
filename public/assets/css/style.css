@@ -277,3 +277,18 @@ footer a:hover, footer a:focus {
     }
 
 }
+
+form.inline {
+    display: inline-block;
+}
+
+form.inline input[type="text"] {
+    width: 50px;
+    text-align: center;
+}
+
+p.team {
+    width: 100px;
+    text-align: center;
+    display: inline-block;
+}

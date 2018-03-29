@@ -25,6 +25,9 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+            logout:
+                path:   logout
+                target: login
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -36,3 +39,7 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/$, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/tournament, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/match/add, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/match/update, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/match/delete, roles: [ROLE_USER, ROLE_ADMIN] }

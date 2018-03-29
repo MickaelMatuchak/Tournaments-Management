@@ -2,14 +2,15 @@
 
 namespace App\Repository;
 
-use App\Entity\Tournament;
+use App\Entity\Game;
+use App\Entity\Match;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
-class TournamentRepository extends ServiceEntityRepository
+class GameRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Tournament::class);
+        parent::__construct($registry, Game::class);
     }
 }

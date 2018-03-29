@@ -39,15 +39,48 @@
                     </div>
 
                     <div class="form-bottom">
-                        <h3>Liste des tournois</h3>
+                        <h3>Tournoi {{ tournament.name }}</h3>
+                        <h4>Liste des matchs :</h4>
+
                         <ul>
-                            {% for tournament in tournaments %}
-                                <li><a href="tournament?id={{ tournament.id }}">{{ tournament.name }}</a></li>
+                            {% for match in tournament.matchs %}
+                                <div class="match">
+                                    <form action="{{ path('updateMatch') }}" method="post" class="inline">
+                                        <input type="hidden" name="tournament" value="{{ tournament.id }}">
+
+                                        <p class="team">{{ match.nameTeam1 }}</p>
+                                        <input type="text" name="scoreTeam1" value="{{ match.scoreTeam1 }}" />
+                                        -
+                                        <input type="text" name="scoreTeam2" value="{{ match.scoreTeam2 }}"/>
+                                        <p class="team">{{ match.nameTeam2 }}</p>
+
+                                        <input type="hidden" name="match" value="{{ match.id }}">
+                                        <input type="submit" value="Modifier score" />
+                                    </form>
+
+                                    <form action="{{ path('deleteMatch') }}" method="post" class="inline">
+                                        <input type="hidden" name="match" value="{{ match.id }}">
+                                        <input type="hidden" name="tournament" value="{{ tournament.id }}">
+
+                                        <input type="submit" value="Supprimer match" />
+                                    </form>
+                                </div>
                             {% else %}
-                                <li>Aucun tournoi, ajouter un tournoi grâce à la commande : "php bin/console app:create-tournament {nameTournament} {dateTournament};"</li>
+                                <li>Aucun match</li>
                             {% endfor %}
                         </ul>
                     </div>
+                </div>
+
+                <div class="form-bottom">
+                    <h4>Ajouter un match :</h4>
+                    <form action="{{ path('addMatch') }}" method="post">
+                        <input type="hidden" name="tournament" value="{{ tournament.id }}">
+
+                        <label for="nameTeam1">Nom équipe 1 : </label> <input type="text" id="nameTeam1" name="nameTeam1" /><br />
+                        <label for="nameTeam2">Nom équipe 2 : </label> <input type="text" id="nameTeam2" name="nameTeam2" /><br />
+                        <input type="submit" value="Ajouter" />
+                    </form>
                 </div>
             </div>
         </div>

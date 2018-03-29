@@ -10,9 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-/**
- * TODO peut certainement être amélioré... surtout la partie inscription
- */
+/** TODO peut certainement être amélioré... surtout la partie inscription */
 class SecurityController extends Controller
 {
     /**
@@ -77,4 +75,10 @@ class SecurityController extends Controller
             'last_username' => ''
         ));
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     */
+    public function logout(Request $request)
+    {}
 }

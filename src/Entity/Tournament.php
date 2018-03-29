@@ -25,4 +25,13 @@ class Tournament
      * @ORM\Column(type="datetime")
      */
     public $createdAt;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Game")
+     * @ORM\JoinTable(name="tournaments_games",
+     *      joinColumns={@ORM\JoinColumn(name="tournament_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="game_id", referencedColumnName="id", unique=true)}
+     * )
+     */
+    public $matchs;
 }
