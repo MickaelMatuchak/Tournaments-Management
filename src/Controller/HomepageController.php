@@ -96,7 +96,7 @@ class HomepageController extends AbstractController
         if ($request->getMethod() === 'POST') {
             $game = $this
                 ->getDoctrine()
-                ->getRepository(Tournament::class)
+                ->getRepository(Game::class)
                 ->find($request->request->get('match'));
 
             $game->scoreTeam1 = (int) $request->request->get('scoreTeam1');

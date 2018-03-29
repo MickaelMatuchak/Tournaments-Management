@@ -4,10 +4,12 @@ Site réalisé en PHP 7 et Symfony 4 dans le cadre du module IFI PHP du Master 2
 
 ## Déploiement
 
+Import des dépendances :
+> `composer update`
+
 Une base de données est nécessaire et doit être configurée dans le fichier ".env".
 
-Création de la database :
-> `php bin/console doctrine:database:create`
+> `mv .env.dist .env`
 
 Création des entités :
 > `php bin/console doctrine:schema:update --force`
@@ -30,7 +32,7 @@ Un nouveau controleur : "SecurityController" gère l'accès au site.
 Une inscription est requise pour accéder à la liste des tounois. Ce controleur gère l'inscription et la connexion.
 Il utilise l'authentification de Symfony avec une entitée User.
 
-Si l'utilisateur n'est pas connecté ou essaie de se rendre sur une page de site non autorisé il est automatiquement redirigé sur la page d'authentication.
+Si l'utilisateur n'est pas connecté ou essaie de se rendre sur une page du site non autorisé il est automatiquement redirigé sur la page d'authentication.
 
 Le controleur "HomepageController" gère l'accès aux tournois et aux matchs.
 
@@ -39,6 +41,6 @@ Sur une page tournoi l'utilisateur peut ajouter, supprimer et mettre à jour les
 
 ## A améliorer :
 
-- SecurityController -> register() peut être amélioré
-- Les entités variable en private avec getters/setters
+- SecurityController -> la méthode register peut être plus symfony like
+- Les entités -> les variables sont à mettre en private avec getters/setters
 - templates -> une template parent doit être écrite pour simplifier les autres templates
